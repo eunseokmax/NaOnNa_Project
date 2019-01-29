@@ -1,0 +1,146 @@
+CREATE TABLE ground_manager (
+   ground_admin varchar2(20) primary key ,/* 관리자 ID */
+   ground_ad_pw VARCHAR2(20) NOT NULL, /* 관리자 비밀번호 */
+   ground_ad_pin varchar2(10),
+   ground_name varchar2(50)
+--    constraint fk_ground_manger FOREIGN key(ground_name)
+--    references ground_soccer(ground_name)
+);
+
+select * from ground_manager;
+select ground_admin from ground_manager where ground_admin='admin';
+
+
+drop table ground_manager;
+
+
+--ALTER TABLE ground_admin
+--   ADD
+--      CONSTRAINT PK_ground_admin
+--      PRIMARY KEY (
+--         ground_admin
+--      );
+--        
+
+CREATE TABLE ground_soccer (
+   ground_name VARCHAR2(200), /* 경기장이름 */
+   ground_admin VARCHAR2(200),
+   ground_city VARCHAR2(200) not null, /*도시이름*/
+   ground_addr Varchar2(200) NOT NULL, /* 주소 */
+   grass VARCHAR2(200) NOT NULL, /* 잔디 */
+   light VARCHAR2(200) NOT NULL, /* 조명 유무 */
+   parking VARCHAR2(200) NOT NULL, /* 주차장유무 */
+   shower VARCHAR2(200), /* 샤워시설유무 */
+   week_morning VARCHAR2(200), /* 평일오전 */
+   week_evening VARCHAR2(200), /* 평일오후 */
+   weekend_morning VARCHAR2(200), /* 주말오전 */
+   weekend_evening VARCHAR2(200), /* 주말오후 */
+   rule VARCHAR2(200),
+   ground_people VARCHAR2(200), /* 몇명 추천 */
+   ground_size varchar2(200), /* 크기(OxO) */
+   photo1  varchar2(200), /*경기장 사진1*/
+   photo2  varchar2(200), /*경기장 사진2*/
+   photo3  varchar2(200) /*경기장 사진3*/
+);
+
+select * from ground_soccer;
+
+drop table ground_soccer;
+
+
+CREATE TABLE ground_manager (
+   ground_admin varchar2(20) primary key ,/* 관리자 ID */
+   ground_ad_pw VARCHAR2(20) NOT NULL, /* 관리자 비밀번호 */
+   ground_ad_pin varchar2(10),
+   ground_name varchar2(50)
+--    constraint fk_ground_manger FOREIGN key(ground_name)
+--    references ground_soccer(ground_name)
+);
+
+CREATE TABLE ground_soccer (
+   ground_name VARCHAR2(200), /* 경기장이름 */
+   ground_admin VARCHAR2(200),
+   ground_city VARCHAR2(200) not null, /*도시이름*/
+   ground_addr Varchar2(200) NOT NULL, /* 주소 */
+   grass VARCHAR2(200) NOT NULL, /* 잔디 */
+   light VARCHAR2(200) NOT NULL, /* 조명 유무 */
+   parking VARCHAR2(200) NOT NULL, /* 주차장유무 */
+   shower VARCHAR2(200), /* 샤워시설유무 */
+   week_morning VARCHAR2(200), /* 평일오전 */
+   week_evening VARCHAR2(200), /* 평일오후 */
+   weekend_morning VARCHAR2(200), /* 주말오전 */
+   weekend_evening VARCHAR2(200), /* 주말오후 */
+   rule VARCHAR2(200),
+   ground_people VARCHAR2(200), /* 몇명 추천 */
+   ground_size varchar2(200), /* 크기(OxO) */
+   photo1  varchar2(200), /*경기장 사진1*/
+   photo2  varchar2(200), /*경기장 사진2*/
+   photo3  varchar2(200) /*경기장 사진3*/
+);
+
+
+create table team (
+    team_name VARCHAR2(100) primary key,
+    nickname VARCHAR2(150),
+    age VARCHAR2(200),
+    emblem VARCHAR2(200),
+    ability VARCHAR2(200),
+    intro VARCHAR2(200),
+    number_team NUMBER,
+    area VARCHAR2(200)
+);
+
+CREATE TABLE matching (
+	matchingID VARCHAR2(100) NOT NULL, /* 매칭제목 */
+	hometeam VARCHAR2(100) NOT NULL, /* 팀이름 */
+	match_location varchar2(50) NOT NULL, /* 위치 */
+	play_date DATE NOT NULL, /* 날짜 */
+	people NUMBER, /* 0X0 인원 */
+    awayteam varchar2(100),
+    matFin number,
+    ground_name varchar2(100)    
+);
+
+CREATE TABLE booking (
+	booknumber VARCHAR2(20), /* 예약번호 */
+	ground_name VARCHAR2(100), /* 경기장이름 */
+    	matchingID VARCHAR2(50), /*매칭제목 */
+	nickname VARCHAR2(15),/* 별칭 */
+	assignment NUMBER, /* 할당시간 */
+	start_time DATE, /* 시간 */
+	end_time DATE, /* 날짜 */
+	confirm NUMBER /* 승인여부 */
+);
+
+CREATE TABLE user_info (
+	nickname VARCHAR2(50), /* 별칭 */
+	team_name VARCHAR2(100), /* 팀이름 */
+	gender VARCHAR2(10), /* 성별 */
+	age NUMBER, /* 나이 */
+	position varchar2(30), /* 포지션 */
+	email VARCHAR(100), /* 이메일 */
+	cap number, /* 주장여부 */
+   	forPerson varchar2(30),
+   	user_photo varchar2(200),
+	City VARCHAR2(30) /* 시도 */
+);
+
+CREATE TABLE MESSAGE (
+    GETPEOPLE VARCHAR2(100),
+    SENDPEOPLE VARCHAR2(100),
+    MATCHINGID VARCHAR2(100),
+    MESSAGE NUMBER,  		/*1번 매칭신청, 2번 팀신청 */
+    CONFIRM NUMBER,
+    PEOPLE NUMBER,
+    TEAM_NAME VARCHAR2(100),
+    GROUND_NAME VARCHAR2(100)
+);
+
+select * from user_info;
+select * from team;
+select * from matching;
+drop table team;
+drop table user_info;
+drop table booking;
+drop table ground_soccer;
+drop table matching;
